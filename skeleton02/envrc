@@ -35,4 +35,5 @@ export CWD=$(pwd)
 PATH=$CWD/../../dockerw:$PATH
 
 alias build="build.sh"
+alias rebuild="rebuild.sh"
 alias start="start.sh"
