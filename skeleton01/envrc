@@ -34,5 +34,4 @@ export IMAGE="$ORIGIN/$ENTITY:$TAG"
 export CWD=$(pwd)
 PATH=$CWD/../../dockerw:$PATH
 
-alias build="build.sh"
-alias start="start.sh"
+source $CWD/../../dockerw/cmdrc

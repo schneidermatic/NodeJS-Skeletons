@@ -26,9 +26,9 @@
 #==============================================================================
 
 export ORIGIN="node"
-export ENTITY="skeleton02"
+export ENTITY="skeleton03"
 export TAG="1.0.0"
-export NAME="skeleton02"
+export NAME="skeleton03"
 export IMAGE="$ORIGIN/$ENTITY:$TAG"
 
 export CWD=$(pwd)
