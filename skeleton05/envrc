@@ -28,8 +28,8 @@
 export ORIGIN="node"
 export ENTITY="skeleton05"
 export TAG="1.0.0"
-export NAMES=("skeleton05")
-export IMAGES=("$ORIGIN/$ENTITY:$TAG")
+export NAME=$ENTITY
+export IMAGE="$ORIGIN/$ENTITY:$TAG"
 
 #export MONGO_HOSTNAME="mongodb"
 export MONGO_HOSTNAME="localhost"

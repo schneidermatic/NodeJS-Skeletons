@@ -15,6 +15,10 @@ RUN npm install
 # Bundle app source
 COPY app.js .
 COPY bin/www ./bin/www
+COPY modules ./modules
+COPY routes ./routes
+COPY scripts ./scripts
+COPY views ./views
 
 ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.5.0/wait /wait
 RUN chmod +x /wait
