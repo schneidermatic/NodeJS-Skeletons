@@ -1,0 +1,40 @@
+version: "3.7"
+services:
+  webapp:
+    build:
+      context: .
+    container_name: "webapp05"
+    environment:
+      - MONGO_HOSTNAME=mongodb
+      - WAIT_HOSTS=mongodb:27017
+    restart: always
+    ports: ['3000:3000']
+    networks: ['stack']
+    depends_on:
+      - mongodb
+  mongodb:
+    image: mongo:4.1.13
+    container_name: "mongodb"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+      - MONGO_INITDB_DATABASE=myapp
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    volumes:
+      - db_data:/data/db
+      - ./scripts/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+    ports:
+      - 27017:27017
+    networks: ['stack']
+    #command: mongod --logpath=/dev/null
+    healthcheck:
+      test: sleep 10; netstat -an | grep 27017 >/dev/null; if [[ 0 != $$? ]]; then echo 0; else echo 1; fi
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+networks: {stack: {}}
+
+volumes:
+  db_data:
