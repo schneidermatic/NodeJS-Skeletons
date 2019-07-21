@@ -37,7 +37,10 @@ export MONGO_INITDB_ROOT_USERNAME=admin
 export MONGO_INITDB_ROOT_PASSWORD=changeme
 export MONGO_INITDB_DATABASE=myapp
 
+alias drm="$CWD/scripts/drm.sh"
+alias dmk="$CWD/scripts/dmk.sh"
+
 export CWD=$(pwd)
-PATH=$CWD/../../dockerw:$PATH
+PATH=$CWD/../../dockerw:$CWD/scripts:$PATH
 
 source $CWD/../../dockerw/cmdrc

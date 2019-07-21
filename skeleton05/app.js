@@ -2,11 +2,11 @@ var express = require('express');
 var path = require('path');
 
 var bodyParser = require("body-parser");
-var logger = require('morgan');
 var createError = require('http-errors');
 var router = require('./routes/routes');
 var db = require('./modules/database');
 var User = require ('./modules/schema');
+var logger = require('./modules/logger');
 
 // setup express app
 var app = express();
@@ -14,8 +14,6 @@ app.set('views', path.resolve(__dirname, 'views'));
 app.set("view engine", "ejs");
 
 // setup database schema
-//db.setSchema();
-
 var users = [
     {   
         "userid": "001",
@@ -45,6 +43,8 @@ function insert(users) {
 }
 
 insert(users);
+
+logger.info("app is starting ...")
 
 // define routing
 app.use(router);
