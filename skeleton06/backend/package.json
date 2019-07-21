@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "config": {
-    "mongo_hostname": "localhost"
+    "mongo_hostname": "mongodb"
   },
   "scripts": {
     "start": "node ./bin/www",
