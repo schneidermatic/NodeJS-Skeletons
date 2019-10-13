@@ -1,0 +1,23 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: montapi-deployment
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: montapi
+  template:
+    metadata:
+      labels:
+        app: montapi
+    spec:
+      containers:
+      - name: montapi
+        image: schneidermatic/montapi:0.1.0
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3001

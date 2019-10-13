@@ -1,0 +1,31 @@
+{
+  "name": "montapi",
+  "version": "0.2.0",
+  "description": "Common montioring test api",
+  "repository": "github.ruv.de:monitoring/montapi",
+  "docker-registry": "https://f4s-docker.ruv.de/harbor/projects/139/monitoring%2Fmontapi",
+  "private": true,
+  "author": {
+    "name": "Markus Schneider",
+    "email": "markus.schneider@ruv.de"
+  },
+  "contributors": [
+    {
+      "name": "firstname lastname",
+      "email": "firstname.lastname@ruv.de"
+    }
+  ],
+  "scripts": {
+    "start": "export PORT=3001 && node ./bin/www",
+    "devstart": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "nodemon": "^1.19.1",
+    "swagger-ui-express": "^4.0.7",
+    "winston": "^3.2.1"
+  }
+}

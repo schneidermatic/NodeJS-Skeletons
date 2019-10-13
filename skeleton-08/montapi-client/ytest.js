@@ -1,0 +1,227 @@
+
+var swaggerjs = {
+    "swagger": "2.0",
+    "info": {
+      "version": "0.2.0",
+      "title": "Monitoring Test API",
+      "description": "Monitoring Test API",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:3001",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "API",
+        "description": "Monitoring API for testing purposes"
+      }
+    ],
+    "schemes": [
+      "http"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/service/monitoring/test/api/v1/logmsg": {
+        "post": {
+          "tags": [
+            "LogMsg"
+          ],
+          "description": "Create new log message",
+          "parameters": [
+            {
+              "name": "logmsg",
+              "in": "body",
+              "description": "Log Message that we want to create",
+              "schema": {
+                "$ref": "#/definitions/LogMsg"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "New Log Message is created",
+              "schema": {
+                "$ref": "#/definitions/LogMsg"
+              }
+            }
+          }
+        }
+      },
+      "/service/monitoring/test/api/info": {
+        "get": {
+          "tags": [
+            "Info"
+          ],
+          "summary": "Get api project info",
+          "responses": {
+            "200": {
+              "description": "Package.json info"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "LogMsg": {
+        "required": [
+          "message",
+          "elastic_index",
+          "created",
+          "class",
+          "owner",
+          "severity",
+          "priority",
+          "category",
+          "correlation_id",
+          "brief_description",
+          "description",
+          "documentation",
+          "hostname",
+          "container_image",
+          "source",
+          "sub_source",
+          "origin",
+          "sub_origin",
+          "it_service",
+          "business_service",
+          "tags"
+        ],
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "car.insure69.com: HTTP 503 - Service is unavailabe"
+          },
+          "elastic_index": {
+            "type": "string",
+            "example": "montapi"
+          },
+          "created": {
+            "type": "string",
+            "description": "...",
+            "example": "2020-01-01T00:00:01Z",
+            "format": "date-time"
+          },
+          "class": {
+            "type": "string",
+            "example": "logmsg.ruv.de/monitoring/test/api/v1"
+          },
+          "owner": {
+            "type": "string",
+            "example": "Team-A"
+          },
+          "severity": {
+            "type": "string",
+            "example": "WARNING",
+            "description": "Severities: [UNKNOWN, HARMLESS, WARNING, MINOR, MAJOR, CRITICAL, FATAL]"
+          },
+          "priority": {
+            "type": "number",
+            "example": 4,
+            "description": "Priorities: [1, 2, 3, 4, 5]"
+          },
+          "category": {
+            "type": "string",
+            "example": "Availability",
+            "description": "Categories: [Availability, Accuracy, Performance]"
+          },
+          "correlation_id": {
+            "type": "string",
+            "example": "CI123456789",
+            "description": "Needed for Duplication Detection"
+          },
+          "brief_description": {
+            "type": "string",
+            "example": "car.insure69.com: HTTP 503 - Service is unavailabe",
+            "description": "Title of the Incident Message"
+          },
+          "description": {
+            "type": "string",
+            "example": "There seems to be a serious incident with the Container image",
+            "description": "More detailed information about the incident"
+          },
+          "documentation": {
+            "type": "string",
+            "example": "http://ops.insure69.com/docu",
+            "description": "Link to the documentation"
+          },
+          "hostname": {
+            "type": "string",
+            "example": "linux-12345"
+          },
+          "ip_addr": {
+            "type": "string",
+            "example": "169.254.169.254"
+          },
+          "container_image": {
+            "type": "string",
+            "example": "insure69/car:1.1.0"
+          },
+          "source": {
+            "type": "string",
+            "example": "Synthetic Monitoring"
+          },
+          "sub_source": {
+            "type": "string",
+            "example": "Car.Insure69_E2E_Monitor"
+          },
+          "origin": {
+            "type": "string",
+            "example": "SyntheticGuard"
+          },
+          "sub_origin": {
+            "type": "string",
+            "example": "Landing Page"
+          },
+          "it_service": {
+            "type": "string",
+            "example": "Car Insure69 Portal Service"
+          },
+          "business_service": {
+            "type": "string",
+            "example": "On Demand Car Insurance Business"
+          },
+          "tags": {
+            "type": "string",
+            "example": "car.insure69.com"
+          }
+        }
+      }
+    }
+  } 
+
+
+
+
+
+var logmsg = {
+              "severity": [ 
+                   "CRITICAL",
+                   "WARNING"
+               ] 
+            }
+
+console.log(Math.floor(Math.random() * logmsg.severity.length)) 
+
+function buildMsg(customMsg) {
+    return defaultMsg = {
+           message : (typeof customMsg.message === "undefined") ? swaggerjs.definitions.LogMsg.properties.message.example : customMsg.message,
+           created : (new Date()).toISOString(),
+           severity: logmsg.severity[Math.floor(Math.random() * logmsg.severity.length)] 
+    }
+}
+
+var customMsg = {
+
+}
+
+console.log(buildMsg(customMsg));

@@ -1,0 +1,11 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: monapi-ingress
+spec:
+  backend:
+    serviceName: montapi-service
+    servicePort: 80
+
+
+

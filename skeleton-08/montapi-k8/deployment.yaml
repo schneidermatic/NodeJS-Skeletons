@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: montapi-deployment
+  namespace: monitoring
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: montapi
+    spec:
+      containers:
+      - name: montapi
+        image: schneidermatic/montapi:0.1.0
+        imagePullPolicy: Always
+        name: montapi
+        ports:
+        - containerPort: 3001
+          name: app-port
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /
+            port: app-port
+            scheme: HTTP
+          initialDelaySeconds: 20
+          periodSeconds: 20
+          successThreshold: 1
+          timeoutSeconds: 20

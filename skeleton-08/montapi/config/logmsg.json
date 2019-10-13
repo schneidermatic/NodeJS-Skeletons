@@ -1,0 +1,51 @@
+{
+    "logmsg" : {
+        "severities": [
+            "UNKNOWN",
+            "HARMLESS",
+            "WARNING",
+            "MINOR",
+            "MAJOR",
+            "CRITICAL",
+            "FATAL"
+        ],
+        "pages": [
+            "Landing-Page",
+            "Login-Page",
+            "Product-Page",
+            "Order-Page",
+            "Account-Page"
+        ],
+        "categories": [
+            "Availability",
+            "Accuracy",
+            "Performance"
+        ],
+        "teams": [
+            "Team-A",
+            "Team-B",
+            "Team-C"
+        ],
+        "hostnames": [
+            "lx01111", 
+            "lx02222",
+            "lx03333",
+            "lx04444",
+            "lx05555"
+        ],
+        "correlation_ids": [
+            "CI01111",
+            "CI02222",
+            "CI03333",
+            "CI04444",
+            "CI05555"
+        ],
+        "business_services": [
+            "Travel Insurance",
+            "Health Insurance",
+            "Life Insurance",
+            "Car Insurance",
+            "Home Insurance"
+        ]
+    }
+}
